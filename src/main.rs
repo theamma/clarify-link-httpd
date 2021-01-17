@@ -35,13 +35,6 @@ fn sink(clarify_form: Form<Obfuscated>) -> Template {
     Template::render("home", context)
 }
 
-/*
-#[get("/")]
-fn index() -> Option<NamedFile> {
-    NamedFile::open("static/index.html").ok()
-}
-*/
-
 fn rocket() -> rocket::Rocket {
     rocket::ignite()
         .mount("/", routes![sink])
