@@ -8,7 +8,6 @@ use serde::Serialize;
 use rocket_contrib::serve::StaticFiles;
 use rocket_contrib::templates::Template;
 use rocket::request::Form;
-use rocket::response::NamedFile;
 
 fn clarify(s: &str) -> Cow<str> {
     let re = Regex::new(r"(\[|\]|BLOCKED)").unwrap();
