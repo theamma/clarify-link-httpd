@@ -8,3 +8,10 @@ edition = "2018"
 
 [dependencies]
 rocket = "0.4.6"
+serde = { version = "1.0", features = ["derive"] }
+regex = "1"
+
+[dependencies.rocket_contrib]
+version = "0.4.6"
+default-features = false
+features = ["serve" , "handlebars_templates", "tera_templates"]
