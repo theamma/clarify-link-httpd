@@ -39,10 +39,23 @@
 
     <div class="container">
       <form action="/" method="post">
+        <div class="row">
+          <div class="col-xs-8">
+            <label for="field_obfuscated_link">Obfuscated Link</label>
+            <input type="text" class="form-control" name="field_obfuscated_link" 
+            placeholder="Hier den obfuskierten Link einfügen">
+          </div>
+          <div class="col-xs-2">
+            <label for="field_proto">Protocol</label>
+            <select class="form-control" name="field_proto">
+              <option>https</option>
+              <option>http</option>
+              <option>ftp</option>
+              <option>None</option>
+            </select>
+          </div>
+        </div>
         <div class="form-group">
-          <label for="feldUrl">Obfuscated Link</label>
-          <input type="text" class="form-control" name="field_obfuscated_link" 
-            placeholder="BLOCKEDwww[.]example[.]com/foo/index[.]html">
         </div>
         <input class="btn btn-default" type="submit" value="Clarify">
       </form>

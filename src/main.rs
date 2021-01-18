@@ -17,6 +17,7 @@ fn clarify(s: &str) -> Cow<str> {
 #[derive(FromForm, Debug)]
 struct Obfuscated {
     field_obfuscated_link: String,
+    field_proto: String,
 }
 
 #[post("/", data = "<clarify_form>")]
@@ -27,11 +28,20 @@ fn sink(clarify_form: Form<Obfuscated>) -> Template {
         clarified_link: String,
     }
 
-    let obfuscated_link = clarify_form.into_inner().field_obfuscated_link;
+    let values: Obfuscated = clarify_form.into_inner();
 
-    let context = Context {
-        clarified_link: format!("https://{}", clarify(&obfuscated_link))
-    };
+    let context;
+    if values.field_proto == "None" {
+        context = Context {
+            clarified_link: format!("{}", 
+                clarify(&values.field_obfuscated_link))
+        };
+    } else {
+        context = Context {
+            clarified_link: format!("{}://{}", values.field_proto,
+                                    clarify(&values.field_obfuscated_link))
+        };
+    }
     Template::render("home", context)
 }
 
